@@ -6,7 +6,7 @@
 </head>
 <body>
   
-  <form action="recibe.php" method="">
+  <form action="recibe.php" method="post">
     <input type="text" name="nombre" placeholder="Nombre: "><br>
     
     <label for="hombre">Hombre</label>
