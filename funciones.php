@@ -1,21 +1,20 @@
 <?php
 
-/*function saludo($nombre) {
-  echo 'Hola ' . $nombre . '<br>';
+function saludo($nombre) {
+  return 'Hola ' . $nombre . '<br>';
 }
 
-saludo('Jaimito');
-*/
+echo saludo('Jaimito');
 
-function sumar($a, $b) {
-  $resultado = $a + $b;
-  echo $resultado . '<br>';
+
+/*function sumar($a, $b) {
+  return $a + $b;
 }
 
-sumar(15, 10);
+echo sumar(15, 10);
 
 sumar(15, 150);
 
-sumar(150, 2510);
+sumar(150, 2510);*/
 
 ?>
