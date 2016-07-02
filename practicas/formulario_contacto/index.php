@@ -1,7 +1,7 @@
 <?php
 
   $errores = '';
-  $enviado = '';
+  $enviado = false;
 
   if (isset($_POST['submit'])) {
     $nombre = $_POST['nombre'];
@@ -27,6 +27,27 @@
     } else {
       $errores .= 'Por favor ingresa un correo! <br>';
     }
+
+    if (!empty($mensaje)) {
+      $mensaje = htmlspecialchars($mensaje);
+      $mensaje = trim($mensaje);
+      $mensaje = stripslashes($mensaje);
+
+    } else {
+      $errores .= 'Por favor ingresa un mensaje! <br>';
+    }
+
+    if (!$errores) {
+      $enviar_a = 'davidg9404@gmail.com';
+      $asunto = 'Correo enviado desde miPagina.com';
+      $mensajePreparado  = 'De: ' . $nombre . '\n';
+      $mensajePreparado .= 'Correo: ' . $correo . '\n';
+      $mensajePreparado .= 'Mensaje: ' .$mensaje . '\n';
+
+      mail($enviar_a, $asunto, $mensajePreparado);
+      $enviado = true;
+    }
+
   }
   require 'index.view.php';
 ?>
