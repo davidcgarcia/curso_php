@@ -15,8 +15,16 @@
       <input type="text" name="correo" id="correo" class="form-control" placeholder="Correo" value="">
 
       <textarea name="mensaje" class="form-control" id="mensaje" placeholder="Mensaje"></textarea>
+      
+      <!-- <div class="alert error">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      </div>
 
-      <input type="submit" value="Enviar" class="btn btn-primary" value="Enviar Correo">
+      <div class="alert success">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      </div> -->
+
+      <input type="submit" class="btn btn-primary" value="Enviar Correo">
     </form>
   </div>
 
