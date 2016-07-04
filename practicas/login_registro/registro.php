@@ -28,8 +28,26 @@
         $errores .= '<li>El nombre de usuario ya existe!</li>';
       }
 
+      $password = hash('sha512', $password);
+      $password2 = hash('sha512', $password2);
+
+      if ($password != $password2) {
+        $errores .= '<li>Las contraseñas no son iguales</li>';
+      }
+
     } else {
       $errores .= '<li>Por favor rellena todos los datos correctamente!</li>';
+    }
+
+    if ($errores == '') {
+      $sql = 'INSERT INTO usuarios(id, usuario, password) VALUES(null, :usuario, :password)';
+      $statement = $conexion->prepare($sql);
+      $statement->execute([
+        ':usuario'  => $usuario, 
+        ':password' => $password
+      ]);
+
+      header('Location: login.php');
     }
   }
   require 'views/registro.view.php';
