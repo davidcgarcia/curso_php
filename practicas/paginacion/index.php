@@ -29,8 +29,6 @@
 
   $numeroPaginas = ceil($totalArticulos / $postPorPagina);
 
-  echo $numeroPaginas;
-
 
   require 'index.view.php';
 ?>
