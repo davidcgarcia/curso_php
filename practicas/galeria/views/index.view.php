@@ -19,7 +19,7 @@
     <div class="contenedor">
       <?php foreach ($fotos as $foto): ?>
         <div class="thumb">
-          <a href="#">
+          <a href="foto.php?id=<?php echo $foto['id']; ?>">
             <img src="fotos/<?php echo $foto['imagen']; ?>" alt="titulo de la imagen">
           </a>
         </div>

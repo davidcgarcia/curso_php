@@ -30,7 +30,6 @@ $totalPost = $statement->fetch()['total_filas'];
 
 $totalPaginas = ceil($totalPost / $fotosPorPagina);
 
-echo $totalPaginas;
 require 'views/index.view.php';
 
 ?>
