@@ -16,7 +16,7 @@
   </header>
 
   <div class="contenedor">
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="formulario" method="POST" ectype="multipart/form-data">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="formulario" method="POST" enctype="multipart/form-data">
       
       <label for="foto">Selecciona tu foto</label>
       <input type="file" name="foto" id="foto">
@@ -26,7 +26,10 @@
 
       <label for="texto">Descripcion</label>
       <textarea name="texto" id="texto" placeholder="Ingresa una descripcion"></textarea>
-
+      
+      <?php if (isset($error)): ?>
+        <p class="error"><?php echo $error; ?></p>
+      <?php endif ?>
       <input type="submit" value="Subir Foto" class="submit">
     </form>
   </div>
