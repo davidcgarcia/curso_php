@@ -11,8 +11,11 @@
 
     $errores = '';
 
-    if (!empty($usuario) || !empty($password) || !empty($password2)) {
+    if (empty($usuario) || empty($password) || empty($password2)) {
       
+      $errores .= '<li>Por favor rellena todos los datos correctamente!</li>';
+
+    } else {
       try {
         $conexion = new PDO('mysql:host=localhost;dbname=curso_login', 'root', 'L4r4v3l*.*2016');
       } catch(PDOException $e) {
@@ -34,17 +37,14 @@
       if ($password != $password2) {
         $errores .= '<li>Las contraseñas no son iguales</li>';
       }
-
-    } else {
-      $errores .= '<li>Por favor rellena todos los datos correctamente!</li>';
     }
 
-    if ($errores == '') {
-      $sql = 'INSERT INTO usuarios(id, usuario, password) VALUES(null, :usuario, :password)';
-      $statement = $conexion->prepare($sql);
+    if ($errores == '') {  
+      $statement = $conexion->prepare("INSERT INTO usuarios(id, usuario, password) VALUES(null, :usuario, :password)");
+
       $statement->execute([
         ':usuario'  => $usuario, 
-        ':password' => $password
+        ':password' => $password 
       ]);
 
       header('Location: login.php');
