@@ -1,29 +1,20 @@
 <?php require 'header.php'; ?>
 
   <div class="contenedor">
-    <div class="post">
-      <h2 class="titulo"><a href="single.php">Titulo del articulo</a></h2>
-      <p class="fecha">1 de Enero 2016</p>
-      <div class="thumb">
-        <a href="#">
-          <img src="<?php echo RUTA; ?>imagenes/1.png" alt="">
-        </a>
-      </div>
-      <p class="extracto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, modi.</p>
-      <a href="#" class="continuar">Continuar leyendo</a>
-    </div>
 
-    <div class="post">
-      <h2 class="titulo"><a href="#">Titulo del articulo</a></h2>
-      <p class="fecha">1 de Enero 2016</p>
-      <div class="thumb">
-        <a href="#">
-          <img src="<?php echo RUTA; ?>imagenes/2.png" alt="">
-        </a>
+    <?php foreach ($posts as $post): ?>
+      <div class="post">
+        <h2 class="titulo"><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['titulo']; ?></a></h2>
+        <p class="fecha"><?php echo $post['fecha']; ?></p>
+        <div class="thumb">
+          <a href="">
+            <img src="<?php echo RUTA; ?>imagenes/<?php echo $post['thumb']; ?>" alt="">
+          </a>
+        </div>
+        <p class="extracto"><?php echo $foto['extracto']; ?></p>
+        <a href="single.php?id=<?php echo $post['id']; ?>" class="continuar">Continuar leyendo</a>
       </div>
-      <p class="extracto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, modi.</p>
-      <a href="#" class="continuar">Continuar leyendo</a>
-    </div>
+    <?php endforeach ?>
 
     <?php require 'paginacion.php'; ?>
   </div>
