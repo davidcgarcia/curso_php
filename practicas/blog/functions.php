@@ -15,7 +15,7 @@ function conexion($database)
 function limpiarDatos($datos)
 {
   $datos = trim($datos);
-  $datos = strip_slashes($datos);
+  $datos = stripslashes($datos);
   $datos = htmlspecialchars($datos);
 
   return $datos;
@@ -37,5 +37,46 @@ function obtenerPost($postPorPagina, $conexion)
   return $statement->fetchAll();
 }
 
+
+function idArticulo($id)
+{
+  return (int)limpiarDatos($id);
+}
+
+function obtenerPostPorId($conexion, $idArticulo)
+{
+  $sql = 'SELECT * FROM articulos WHERE id = '.$idArticulo. ' LIMIT 1';
+  
+  $resultado = $conexion->query($sql);
+  $resultado = $resultado->fetchAll();
+
+  return ($resultado) ? $resultado : false;
+}
+
+function fecha($fecha)
+{
+  $timestamp = strtotime($fecha);
+  $meses = [
+    'Enero', 
+    'Febrero', 
+    'Marzo', 
+    'Abril', 
+    'Mayo', 
+    'Junio', 
+    'Julio', 
+    'Agosto',
+    'Septiembre', 
+    'Octubre', 
+    'Noviembre', 
+    'Diciembre'
+  ];
+
+  $dia = date('d', $timestamp);
+  $mes = date('m', $timestamp) - 1;
+  $year = date('Y', $timestamp);
+
+  $fecha = $dia . ' de ' .$meses['$mes']. ' del ' .$year; 
+  return $fecha;
+}
 
 ?>
